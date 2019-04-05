@@ -1,5 +1,7 @@
 # How to Contribute
 
+
+
 Vavr needs to be compiled with **jdk 1.8.0_40** at a minimum, which fixes many type inference bugs of the java compiler.
 
 [Fork](https://help.github.com/articles/fork-a-repo) the GitHub, send a [pull request](https://help.github.com/articles/using-pull-requests) and keep your fork in [sync](https://help.github.com/articles/syncing-a-fork/) with the upstream repository.
@@ -83,43 +85,43 @@ We organize our classes and interfaces in the following way:
    1. static API
    2. non-static API
    3. adjusted return types
-* The methods of each of these sections are alphabetically ordered. 
+* The methods of each of these sections are alphabetically ordered.
 
 ```java
 /**
  * Description of this class.
- * 
+ *
  * <ul>
  * <li>{@link #containsKey(Object)}}</li>
  * <li>{@link ...}</li>
  * </ul>
- * 
+ *
  * @author ...
  */
 public interface Map<K, V> extends Traversable<Tuple2<K, V>> {
-    
+
     // -- static API
-    
+
     static <K, V> Tuple2<K, V> entry(K key, V value) { ... }
-    
+
     ...
-    
+
     // -- non-static API
 
     @Override
     default boolean contains(Tuple2<K, V> element) { ... }
-    
+
     boolean containsKey(K key);
-    
+
     ...
-    
+
     // -- Adjusted return types
 
     @Override
     Map<K, V> distinct();
-    
+
     ...
-    
+
 }
 ```
 
@@ -156,7 +158,7 @@ If you have dedicated hardware (i.e. no virtual machines) and are interested in 
 you can run all benchmarks from the `vavr-benchmark` module via `io.vavr.JmhRunner.main` or running the following Maven command:
 
 ```bash
-mvn clean test -P benchmark -pl vavr-benchmark 
+mvn clean test -P benchmark -pl vavr-benchmark
 ```
 
 Note: running all the tests will require several hours, during which there should be no other activity done on the given machine.
@@ -254,7 +256,7 @@ We currently check for API changes (which may affect the binary compatibility) u
 mvn package org.apache.felix:maven-bundle-plugin:baseline -DcomparisonVersion=2.0.1 -DskipTests
 ```
 
-In the example above we check API changes between the current branch and the _2.0.1_ tag. In most cases the tag should be the latest official release. 
+In the example above we check API changes between the current branch and the _2.0.1_ tag. In most cases the tag should be the latest official release.
 
 ### Major release
 
